@@ -1,25 +1,13 @@
-var builder = WebApplication.CreateBuilder(args);
+using CalculateApproval;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Services;
+using Google.Apis.Sheets.v4;
+using Google.Apis.Sheets.v4.Data;
+using System;
+using System.IO;
 
-// Add services to the container.
+string googleclientId = "1125466948302 34529805";
+string googleclientSecret = "b8aa1fa7e1259f1ee0d4d19f80e716f0df54dfae\t";
+string[] scopes = new[] { Google.Apis.Sheets.v4.SheetsService.Scope.Spreadsheets };
+UserCredential credential = GoogleAuthentication.Login(googleclientId, googleclientSecret, scopes);
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
