@@ -11,3 +11,8 @@ string googleclientSecret = "b8aa1fa7e1259f1ee0d4d19f80e716f0df54dfae\t";
 string[] scopes = new[] { Google.Apis.Sheets.v4.SheetsService.Scope.Spreadsheets };
 UserCredential credential = GoogleAuthentication.Login(googleclientId, googleclientSecret, scopes);
 
+static string ApplicationName = "CalculateApproval";
+
+private readonly SheetsService _sheetsService;
+
+
