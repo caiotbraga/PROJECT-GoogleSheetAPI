@@ -6,9 +6,9 @@ using Google.Apis.Sheets.v4.Data;
 using System;
 using System.IO;
 
-string credPath = "C:\\Users\\Administrator\\Source\\Repos\\GoogleSheetAPI\\CalculateApproval\\Credentials\\loyal-manifest-412818-b8aa1fa7e125.json";
+string credPath = "C:\\Users\\RID - 4\\Source\\Repos\\GoogleSheetAPI\\CalculateApproval\\Credentials\\loyal-manifest-412818-b8aa1fa7e125.json";
 
-string[] scopes = { SheetsService.Scope.SpreadsheetsReadonly };
+string[] scopes = { SheetsService.Scope.Spreadsheets};
 
 GoogleCredential credential;
 using (var stream = new FileStream(credPath, FileMode.Open, FileAccess.Read))
@@ -57,7 +57,7 @@ if (values != null && values.Count > 0)
         updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
         var updateResponse = updateRequest.Execute();
 
-        string status = average >= 7.0 ? "Aprovado" : (average >= 5.0 ? "Exame Final" : "Reprovado por Nota");
+        string status = average >= 70.0 ? "Aprovado" : (average >= 50.0 ? "Exame Final" : "Reprovado por Nota");
 
         string approvalStatusRange = "engenharia_de_software!G" + (rowIndex + 1); 
         updateValues = new List<IList<object>> { new List<object> { status } };
