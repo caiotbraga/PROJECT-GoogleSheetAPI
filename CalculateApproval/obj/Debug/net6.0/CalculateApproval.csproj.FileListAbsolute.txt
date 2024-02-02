@@ -39,3 +39,44 @@ C:\Users\RID - 4\Desktop\GoogleSheet\GoogleSheetAPI\CalculateApproval\obj\Debug\
 C:\Users\RID - 4\Desktop\GoogleSheet\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.pdb
 C:\Users\RID - 4\Desktop\GoogleSheet\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.genruntimeconfig.cache
 C:\Users\RID - 4\Desktop\GoogleSheet\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\ref\CalculateApproval.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\appsettings.json
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\Credentials\loyal-manifest-412818-b8aa1fa7e125.json
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\CalculateApproval.exe
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\CalculateApproval.deps.json
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\CalculateApproval.runtimeconfig.json
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\CalculateApproval.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\CalculateApproval.pdb
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\Google.Apis.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\Google.Apis.Auth.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\Google.Apis.Core.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\Google.Apis.Sheets.v4.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\System.Management.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Management.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.csproj.AssemblyReference.cache
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.AssemblyInfoInputs.cache
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.AssemblyInfo.cs
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\staticwebassets\msbuild.CalculateApproval.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\staticwebassets\msbuild.build.CalculateApproval.props
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.CalculateApproval.props
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.CalculateApproval.props
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\scopedcss\bundle\CalculateApproval.styles.css
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.csproj.CopyComplete
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\refint\CalculateApproval.dll
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.pdb
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\CalculateApproval.genruntimeconfig.cache
+C:\Users\Administrator\Source\Repos\GoogleSheetAPI\CalculateApproval\obj\Debug\net6.0\ref\CalculateApproval.dll
