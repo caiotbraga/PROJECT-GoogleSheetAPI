@@ -1,0 +1,23 @@
+﻿<Properties StartupConfiguration="{6C1365A1-04D2-4FF2-83EC-B8FEAF99994A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CalculateApproval/Program.cs">
+    <Files>
+      <File FileName="CalculateApproval/Program.cs" Line="28" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CalculateApproval" expanded="True">
+            <Node name="CalculateApproval" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.CalculateApproval PreferredExecutionTarget="/Applications/Opera GX.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+</Properties>
