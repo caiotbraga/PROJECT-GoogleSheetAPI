@@ -76,6 +76,12 @@ if (valuesOfMissedClasses != null && valuesOfMissedClasses.Count > 0)
             var updateRequest = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValues }, spreadsheetId, approvalStatusRange);
             updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
             var updateResponse = updateRequest.Execute();
+
+            string studentAverageRange = "engenharia_de_software!H" + (rowIndex);
+            var updateValuesOfAverage = new List<IList<object>> { new List<object> { 0 } };
+            var updateRequestOfAverage = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValuesOfAverage }, spreadsheetId, studentAverageRange);
+            updateRequestOfAverage.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
+            var updateResponseOfAverage = updateRequest.Execute();
             rowIndex++;
         }
         else
@@ -109,6 +115,14 @@ if (values != null && values.Count > 0)
         double average = sum / count;
         Console.WriteLine("Média do aluno " + student++ + ": " + average);
         status = average >= 70.0 ? "Aprovado" : (average >= 50.0 ? "Exame Final" : "Reprovado por Nota");
+        if(status.CompareTo("Exame Final") != 0)
+        {
+            string studentAverageRange = "engenharia_de_software!H" + (rowIndex + 1);
+            var updateValues = new List<IList<object>> { new List<object> { 0 } };
+            var updateRequest = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValues }, spreadsheetId, studentAverageRange);
+            updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
+            var updateResponse = updateRequest.Execute();
+        }
         string approvalStatusRange = "engenharia_de_software!G" + (rowIndex + 1);
         SpreadsheetsResource.ValuesResource.GetRequest statusRequest =
         service.Spreadsheets.Values.Get(spreadsheetId, approvalStatusRange);
@@ -120,7 +134,7 @@ if (values != null && values.Count > 0)
             var updateRequest = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValues }, spreadsheetId, approvalStatusRange);
             updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
             var updateResponse = updateRequest.Execute();
-            
+
         }
         rowIndex++;
     }
