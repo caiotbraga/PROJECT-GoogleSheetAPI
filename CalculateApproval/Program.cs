@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 using System.Net.NetworkInformation;
 using System.Threading;
 
-string credPath = "/Users/caiotbraga/Desktop/GOOGLE/GoogleSheetAPI/CalculateApproval/Credentials/loyal-manifest-412818-b8aa1fa7e125.json";
+string credPath = "C:\\Users\\RID - 4\\source\\repos\\GoogleSheetAPI\\CalculateApproval\\Credentials\\loyal-manifest-412818-b8aa1fa7e125.json";
 
 string[] scopes = { SheetsService.Scope.Spreadsheets};
 
@@ -50,14 +50,14 @@ Thread thread1 = new Thread(() => WriteApprovalStatusBasedOnAbsences(service, sp
 Thread thread2 = new Thread(() => WriteApprovalStatusBasedOnGrades(service, spreadsheetId));
 Thread thread3 = new Thread(() => checkFinalGrade(service, spreadsheetId));
 
-thread2.Start();
 thread1.Start();
-
+thread2.Start();
 
 thread1.Join();
 thread2.Join();
 
 thread3.Start();
+
 
 
 static void WriteApprovalStatusBasedOnAbsences(SheetsService service, string spreadsheetId, int numberOfClasses)
@@ -133,15 +133,20 @@ static void WriteApprovalStatusBasedOnGrades(SheetsService service, string sprea
             service.Spreadsheets.Values.Get(spreadsheetId, approvalStatusRange);
             ValueRange statusResponse = statusRequest.Execute();
             IList<IList<object>> statusValues = statusResponse.Values;
+            
             if (statusValues == null)
             {
-
                 var updateValues = new List<IList<object>> { new List<object> { status } };
                 var updateRequest = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValues }, spreadsheetId, approvalStatusRange);
                 updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
                 var updateResponse = updateRequest.Execute();
 
-            }else if(status.CompareTo("Exame Final") == 0)
+            }
+            else
+            {
+                status = statusValues[0][0].ToString();
+            }
+            if(status.CompareTo("Exame Final") == 0)
             {
                 string finalGradeApproval = "engenharia_de_software!H" + (rowIndex + 1);
                 var updateValues = new List<IList<object>> { new List<object> { average } };
@@ -180,7 +185,6 @@ static void checkFinalGrade(SheetsService service, string spreadsheetId)
                 }
                 else
                 {
-
                     rowIndex++;
                 }
             }
