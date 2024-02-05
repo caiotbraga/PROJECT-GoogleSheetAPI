@@ -135,11 +135,19 @@ static void WriteApprovalStatusBasedOnGrades(SheetsService service, string sprea
             IList<IList<object>> statusValues = statusResponse.Values;
             if (statusValues == null)
             {
+
                 var updateValues = new List<IList<object>> { new List<object> { status } };
                 var updateRequest = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValues }, spreadsheetId, approvalStatusRange);
                 updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
                 var updateResponse = updateRequest.Execute();
 
+            }else if(status.CompareTo("Exame Final") == 0)
+            {
+                string finalGradeApproval = "engenharia_de_software!H" + (rowIndex + 1);
+                var updateValues = new List<IList<object>> { new List<object> { average } };
+                var updateRequest = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValues }, spreadsheetId, finalGradeApproval);
+                updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
+                var updateResponse = updateRequest.Execute();
             }
             rowIndex++;
         }
@@ -172,6 +180,7 @@ static void checkFinalGrade(SheetsService service, string spreadsheetId)
                 }
                 else
                 {
+
                     rowIndex++;
                 }
             }
