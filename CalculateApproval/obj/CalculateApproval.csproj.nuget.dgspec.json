@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RID - 4\\source\\repos\\GoogleSheetAPI\\CalculateApproval\\CalculateApproval.csproj": {}
+    "C:\\Users\\RID - 4\\Source\\Repos\\GoogleSheetAPI\\CalculateApproval\\CalculateApproval.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RID - 4\\source\\repos\\GoogleSheetAPI\\CalculateApproval\\CalculateApproval.csproj": {
+    "C:\\Users\\RID - 4\\Source\\Repos\\GoogleSheetAPI\\CalculateApproval\\CalculateApproval.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RID - 4\\source\\repos\\GoogleSheetAPI\\CalculateApproval\\CalculateApproval.csproj",
+        "projectUniqueName": "C:\\Users\\RID - 4\\Source\\Repos\\GoogleSheetAPI\\CalculateApproval\\CalculateApproval.csproj",
         "projectName": "CalculateApproval",
-        "projectPath": "C:\\Users\\RID - 4\\source\\repos\\GoogleSheetAPI\\CalculateApproval\\CalculateApproval.csproj",
+        "projectPath": "C:\\Users\\RID - 4\\Source\\Repos\\GoogleSheetAPI\\CalculateApproval\\CalculateApproval.csproj",
         "packagesPath": "C:\\Users\\RID - 4\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RID - 4\\source\\repos\\GoogleSheetAPI\\CalculateApproval\\obj\\",
+        "outputPath": "C:\\Users\\RID - 4\\Source\\Repos\\GoogleSheetAPI\\CalculateApproval\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
