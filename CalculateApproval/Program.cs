@@ -25,8 +25,13 @@ var service = new SheetsService(new BaseClientService.Initializer()
 
 string spreadsheetId = "1-iz4w7WxPP5Dj6I-UjL5t1Y9WDrXqgg_g7B2csJVRbo";
 
+//List of vA
+
+var updateValues = new List<IList<object>> { new List<object> { status } };
+
 string rangeOfNumberOfClasses = "engenharia_de_software!A2:H2";
-SpreadsheetsResource.ValuesResource.GetRequest requestOfNumberOfClasses = service.Spreadsheets.Values.Get(spreadsheetId, rangeOfNumberOfClasses);
+SpreadsheetsResource.ValuesResource.GetRequest requestOfNumberOfClasses =
+service.Spreadsheets.Values.Get(spreadsheetId, rangeOfNumberOfClasses);
 ValueRange responseOfNumberOfClasses = requestOfNumberOfClasses.Execute();
 IList<IList<object>> valuesOfNumberOfClasses = responseOfNumberOfClasses.Values;
 
@@ -46,21 +51,7 @@ if (valuesOfNumberOfClasses != null && valuesOfNumberOfClasses.Count > 0)
     }
 }
 
-Thread thread1 = new Thread(() => WriteApprovalStatusBasedOnAbsences(service, spreadsheetId, numberOfClasses));
-Thread thread2 = new Thread(() => WriteApprovalStatusBasedOnGrades(service, spreadsheetId));
-Thread thread3 = new Thread(() => checkFinalGrade(service, spreadsheetId));
-
-thread1.Start();
-thread2.Start();
-
-thread1.Join();
-thread2.Join();
-
-thread3.Start();
-
-
-
-static void WriteApprovalStatusBasedOnAbsences(SheetsService service, string spreadsheetId, int numberOfClasses)
+static void UpdateSheet(SheetsService service, string spreadsheetId, int numberOfClasses)
 {
     int rowIndex = 4;
     string rangeOfMissedClasses = "engenharia_de_software!C4:C";
@@ -87,7 +78,7 @@ static void WriteApprovalStatusBasedOnAbsences(SheetsService service, string spr
             {
                 status = "Reprovado por falta";
                 string approvalStatusRange = "engenharia_de_software!G" + (rowIndex);
-                var updateValues = new List<IList<object>> { new List<object> { status } };
+                
                 var updateRequest = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValues }, spreadsheetId, approvalStatusRange);
                 updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
                 var updateResponse = updateRequest.Execute();
@@ -103,30 +94,7 @@ static void WriteApprovalStatusBasedOnAbsences(SheetsService service, string spr
 
 static void WriteApprovalStatusBasedOnGrades(SheetsService service, string spreadsheetId)
 {
-    string range = "engenharia_de_software!D4:F";
-    SpreadsheetsResource.ValuesResource.GetRequest request = service.Spreadsheets.Values.Get(spreadsheetId, range);
-    ValueRange response = request.Execute();
-    IList<IList<object>> values = response.Values;
-    int rowIndex = 3;
-    int student = 1;
-    if (values != null && values.Count > 0)
-    {
-        foreach (var row in values)
-        {
-            double sum = 0;
-            int count = 0;
-            string status;
-            foreach (var col in row)
-            {
-                if (double.TryParse(col.ToString(), out double grade))
-                {
-                    sum += grade;
-                    count++;
-                }
-            }
-            double average = Math.Ceiling(sum / count);
-            Console.WriteLine("Média do aluno " + student++ + " : " + average);
-            status = average >= 70.0 ? "Aprovado" : (average >= 50.0 ? "Exame Final" : "Reprovado por Nota");
+    
 
             string approvalStatusRange = "engenharia_de_software!G" + (rowIndex + 1);
             SpreadsheetsResource.ValuesResource.GetRequest statusRequest =
