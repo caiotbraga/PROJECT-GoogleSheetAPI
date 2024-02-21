@@ -2,11 +2,9 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
-using Newtonsoft.Json.Linq;
-using System.Net.NetworkInformation;
-using System.Threading;
 
-string credPath = "C:\\Users\\RID - 4\\source\\repos\\GoogleSheetAPI\\CalculateApproval\\Credentials\\loyal-manifest-412818-b8aa1fa7e125.json";
+//points to the credential provided by Google to access the spreadsheet (Change to your local credential)
+string credPath = "C:\\Users\\RID - 4\\source\\repos\\GoogleSheetAPI\\CalculateApproval\\Credentials\\loyal-manifest-412818-b8aa1fa7e125.json"; 
 
 string[] scopes = { SheetsService.Scope.Spreadsheets};
 
@@ -23,19 +21,20 @@ var service = new SheetsService(new BaseClientService.Initializer()
     ApplicationName = "CalculateApproval",
 });
 
+//Id of ur spreadSheet (Change for the sheet's id that you want to modify)
 string spreadsheetId = "1-iz4w7WxPP5Dj6I-UjL5t1Y9WDrXqgg_g7B2csJVRbo";
+int numberOfClasses = 0;
 
-//List of vA
-
-var updateValues = new List<IList<object>> { new List<object> { status } };
-
+//Defined the range that i want to acess
 string rangeOfNumberOfClasses = "engenharia_de_software!A2:H2";
+
+//Acessing a specify range to get the maximum number of classes
 SpreadsheetsResource.ValuesResource.GetRequest requestOfNumberOfClasses =
 service.Spreadsheets.Values.Get(spreadsheetId, rangeOfNumberOfClasses);
 ValueRange responseOfNumberOfClasses = requestOfNumberOfClasses.Execute();
 IList<IList<object>> valuesOfNumberOfClasses = responseOfNumberOfClasses.Values;
 
-int numberOfClasses = 0;
+//Scrolling through the spreadSheet 
 if (valuesOfNumberOfClasses != null && valuesOfNumberOfClasses.Count > 0)
 {
     foreach (var row in valuesOfNumberOfClasses)
@@ -51,118 +50,67 @@ if (valuesOfNumberOfClasses != null && valuesOfNumberOfClasses.Count > 0)
     }
 }
 
+//Function that Update the SpreadSheet
+UpdateSheet(service, spreadsheetId, numberOfClasses);
+
 static void UpdateSheet(SheetsService service, string spreadsheetId, int numberOfClasses)
 {
-    int rowIndex = 4;
-    string rangeOfMissedClasses = "engenharia_de_software!C4:C";
-    SpreadsheetsResource.ValuesResource.GetRequest requestOfMissedClasses = service.Spreadsheets.Values.Get(spreadsheetId, rangeOfMissedClasses);
-    ValueRange responseOfMissedClasses = requestOfMissedClasses.Execute();
-    IList<IList<object>> valuesOfMissedClasses = responseOfMissedClasses.Values;
+    int students = 1;
+    //Setting the range to acess missed classes and all three grades
+    string range = "engenharia_de_software!C4:F";
+    SpreadsheetsResource.ValuesResource.GetRequest request = service.Spreadsheets.Values.Get(spreadsheetId, range);
+    ValueRange response = request.Execute();
+    IList<IList<object>> values = response.Values;
 
-    if (valuesOfMissedClasses != null && valuesOfMissedClasses.Count > 0)
+    if (values != null && values.Count > 0)
     {
-        foreach (var row in valuesOfMissedClasses)
-        {
-            int numberOfAbsences = 0;
-            string status;
+        //Setting the Lists of Status and Final Grade to update on the spreadSheet
+        List<IList<object>> updateStatus = new List<IList<object>>();
+        List<IList<object>> updateFinalGrade = new List<IList<object>>();
 
-            foreach (var col in row)
-            {
-                if (int.TryParse(col.ToString(), out int missed))
-                {
-                    numberOfAbsences = missed;
-                }
-            }
+        //Scrolling through the rows
+        foreach (var row in values)
+        {
+            //Getting the number of Abscences
+            int numberOfAbsences = int.Parse(row[0].ToString()); 
+
+            //Getting the Grades
+            double p1 = double.Parse(row[1].ToString());
+            double p2 = double.Parse(row[2].ToString());
+            double p3 = double.Parse(row[3].ToString());
+
+            //Calculating the number of Missed Classes Allowed
             int numberOfMissedClassesAllowed = (numberOfClasses * 25) / 100;
-            if (numberOfAbsences > numberOfMissedClassesAllowed)
-            {
-                status = "Reprovado por falta";
-                string approvalStatusRange = "engenharia_de_software!G" + (rowIndex);
-                
-                var updateRequest = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValues }, spreadsheetId, approvalStatusRange);
-                updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
-                var updateResponse = updateRequest.Execute();
-                rowIndex++;
-            }
-            else
-            {
-                rowIndex++;
-            }
+         
+            double sum = p1 + p2 + p3;
+            //calculating the average 
+            double average = Math.Ceiling(sum / 3);
+            //Printing on Console the average of each student
+            Console.WriteLine("Student " + students + " average: "+average);
+            students++;
+            //Setting the status through the average and the absences
+            string status = average >= 70.0 ? "Aprovado" : (average >= 50.0 ? "Exame Final" : "Reprovado por Nota");
+            status = numberOfAbsences > numberOfMissedClassesAllowed ? "Reprovado por falta" : status;
+            double finalGrade = status == "Exame Final" ? 100 - average : 0;
+
+            //Adding the values of Status and Final Grades to the Lists 
+            updateStatus.Add(new List<object> { status });
+            updateFinalGrade.Add(new List<object> { finalGrade });
         }
-    }
-}
 
-static void WriteApprovalStatusBasedOnGrades(SheetsService service, string spreadsheetId)
-{
-    
-
-            string approvalStatusRange = "engenharia_de_software!G" + (rowIndex + 1);
-            SpreadsheetsResource.ValuesResource.GetRequest statusRequest =
-            service.Spreadsheets.Values.Get(spreadsheetId, approvalStatusRange);
-            ValueRange statusResponse = statusRequest.Execute();
-            IList<IList<object>> statusValues = statusResponse.Values;
-            
-            if (statusValues == null)
-            {
-                var updateValues = new List<IList<object>> { new List<object> { status } };
-                var updateRequest = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValues }, spreadsheetId, approvalStatusRange);
-                updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
-                var updateResponse = updateRequest.Execute();
-
-            }
-            else
-            {
-                status = statusValues[0][0].ToString();
-            }
-            if(status.CompareTo("Exame Final") == 0)
-            {
-                string finalGradeApproval = "engenharia_de_software!H" + (rowIndex + 1);
-                var updateValues = new List<IList<object>> { new List<object> { 100 - average } };
-                var updateRequest = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValues }, spreadsheetId, finalGradeApproval);
-                updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
-                var updateResponse = updateRequest.Execute();
-            }
-            rowIndex++;
-        }
-    }
-}
-
-static void checkFinalGrade(SheetsService service, string spreadsheetId)
-{
-    int rowIndex = 4;
-    int i = 0;
-    string approvalStatusRange = "engenharia_de_software!G4:G";
-    SpreadsheetsResource.ValuesResource.GetRequest statusRequest = service.Spreadsheets.Values.Get(spreadsheetId, approvalStatusRange);
-    ValueRange statusResponse = statusRequest.Execute();
-    IList<IList<object>> statusValues = statusResponse.Values;
-    if (statusValues != null)
+        //Using class Batch to update the spreadsheet at once
+        BatchUpdateValuesRequest batchRequest = new BatchUpdateValuesRequest();
+        batchRequest.ValueInputOption = "RAW";
+        //Setting a new Object as a parameter (Range, Values)
+        batchRequest.Data = new List<ValueRange> 
     {
-        foreach (var row in statusValues)
-        {
-            foreach (var col in row)
-            {
-                string status = statusValues[i++][0].ToString();
-                if (status.CompareTo("Aprovado") == 0 || status.CompareTo("Reprovado por falta") == 0 || status.CompareTo("Reprovado por Nota") == 0)
-                {
-                    string finalGradeApproval = "engenharia_de_software!H" + rowIndex;
-                    var updateValues = new List<IList<object>> { new List<object> { 0 } };
-                    var updateRequest = service.Spreadsheets.Values.Update(new ValueRange { Values = updateValues }, spreadsheetId, finalGradeApproval);
-                    updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
-                    var updateResponse = updateRequest.Execute();
-                    rowIndex++;
-                }
-                else
-                {
-                    rowIndex++;
-                }
-            }
-            
-        }
-        
+        new ValueRange { Range = "engenharia_de_software!G4:G", Values = updateStatus.Take(values.Count).ToList() },
+        new ValueRange { Range = "engenharia_de_software!H4:H", Values = updateFinalGrade.Take(values.Count).ToList() }
+    };
+        //Running Batch to Update the SpreadSheet
+        service.Spreadsheets.Values.BatchUpdate(batchRequest, spreadsheetId).Execute();
     }
 }
-
-
 
 
 
