@@ -68,34 +68,41 @@ static void UpdateSheet(SheetsService service, string spreadsheetId, int numberO
         List<IList<object>> updateStatus = new List<IList<object>>();
         List<IList<object>> updateFinalGrade = new List<IList<object>>();
 
-        //Scrolling through the rows
-        foreach (var row in values)
+        try
         {
-            //Getting the number of Abscences
-            int numberOfAbsences = int.Parse(row[0].ToString()); 
+            //Scrolling through the rows
+            foreach (var row in values)
+            {
 
-            //Getting the Grades
-            double p1 = double.Parse(row[1].ToString());
-            double p2 = double.Parse(row[2].ToString());
-            double p3 = double.Parse(row[3].ToString());
+                //Getting the number of Abscences
+                int numberOfAbsences = int.Parse(row[0].ToString());
 
-            //Calculating the number of Missed Classes Allowed
-            int numberOfMissedClassesAllowed = (numberOfClasses * 25) / 100;
-         
-            double sum = p1 + p2 + p3;
-            //calculating the average 
-            double average = Math.Ceiling(sum / 3);
-            //Printing on Console the average of each student
-            Console.WriteLine("Student " + students + " average: "+average);
-            students++;
-            //Setting the status through the average and the absences
-            string status = average >= 70.0 ? "Aprovado" : (average >= 50.0 ? "Exame Final" : "Reprovado por Nota");
-            status = numberOfAbsences > numberOfMissedClassesAllowed ? "Reprovado por falta" : status;
-            double finalGrade = status == "Exame Final" ? 100 - average : 0;
+                //Getting the Grades
+                double p1 = double.Parse(row[1].ToString());
+                double p2 = double.Parse(row[2].ToString());
+                double p3 = double.Parse(row[3].ToString());
 
-            //Adding the values of Status and Final Grades to the Lists 
-            updateStatus.Add(new List<object> { status });
-            updateFinalGrade.Add(new List<object> { finalGrade });
+                //Calculating the number of Missed Classes Allowed
+                int numberOfMissedClassesAllowed = (numberOfClasses * 25) / 100;
+
+                double sum = p1 + p2 + p3;
+                //calculating the average 
+                double average = Math.Ceiling(sum / 3);
+                //Printing on Console the average of each student
+                Console.WriteLine("Student " + students + " average: " + average);
+                students++;
+                //Setting the status through the average and the absences
+                string status = average >= 70.0 ? "Aprovado" : (average >= 50.0 ? "Exame Final" : "Reprovado por Nota");
+                status = numberOfAbsences > numberOfMissedClassesAllowed ? "Reprovado por falta" : status;
+                double finalGrade = status == "Exame Final" ? 100 - average : 0;
+
+                //Adding the values of Status and Final Grades to the Lists 
+                updateStatus.Add(new List<object> { status });
+                updateFinalGrade.Add(new List<object> { finalGrade });
+            }
+        }catch(FormatException ex)
+        {
+            Console.WriteLine("Verifique se todas as células de faltas e de notas são de fato números");
         }
 
         //Using class Batch to update the spreadsheet at once
