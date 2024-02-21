@@ -86,7 +86,7 @@ static void UpdateSheet(SheetsService service, string spreadsheetId, int numberO
                 int numberOfMissedClassesAllowed = (numberOfClasses * 25) / 100;
 
                 double sum = p1 + p2 + p3;
-                //calculating the average 
+                //calculating the average  
                 double average = Math.Ceiling(sum / 3);
                 //Printing on Console the average of each student
                 Console.WriteLine("Student " + students + " average: " + average);
