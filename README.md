@@ -1,5 +1,5 @@
 # Google Sheets API Integration
-This project aims to read a spreadsheet in Google Sheets and make changes based on the data found in it. In this case, it is calculating the status.
+This project aims to read a spreadsheet in Google Sheets and make changes based on the data found in it. In this case, it is calculating the status of the student.
 
 ## Requirements
 Before using this code, follow the steps below to set up your credentials and activate the Google Sheets API:
