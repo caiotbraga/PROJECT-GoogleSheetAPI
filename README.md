@@ -1,26 +1,26 @@
 # Google Sheets API Integration
-Este projeto tem como objetivo ler uma planilha no Google Sheets e fazer alterações com base nos dados encontrados nela. Nesse caso está sendo calculado
-o status
+This project aims to read a spreadsheet in Google Sheets and make changes based on the data found in it. In this case, it is calculating the status.
 
-## Requisitos
-Antes de utilizar este código, siga os passos abaixo para configurar suas credenciais e ativar a API do Google Sheets:
+## Requirements
+Before using this code, follow the steps below to set up your credentials and activate the Google Sheets API:
 
-- **Passo 1**: Acesse Google Cloud Console, Link: https://www.google.com/aclk?sa=l&ai=DChcSEwjp38z90byEAxU2YUgAHd9mB3UYABAAGgJjZQ&gclid=EAIaIQobChMI6d_M_dG8hAMVNmFIAB3fZgd1EAAYASAAEgLBg_D_BwE&sig=AOD64_00JYK1PVOod-wWc5tqJ_uYVTyoag&q&adurl&ved=2ahUKEwix3Mb90byEAxWHppUCHacwBWgQ0Qx6BAgFEAE
-- **Passo 2**: Procure por **"Google Sheets API"** e ative-a para o seu projeto.
-- **Passo 3**: Procure por **"Credenciais"** e crie ou selecione uma credencial de serviço. Faça o download do arquivo JSON contendo suas credenciais.
+- **Step 1**: Access Google Cloud Console, Link: [Google Cloud Console](https://www.google.com/aclk?sa=l&ai=DChcSEwjp38z90byEAxU2YUgAHd9mB3UYABAAGgJjZQ&gclid=EAIaIQobChMI6d_M_dG8hAMVNmFIAB3fZgd1EAAYASAAEgLBg_D_BwE&sig=AOD64_00JYK1PVOod-wWc5tqJ_uYVTyoag&q&adurl&ved=2ahUKEwix3Mb90byEAxWHppUCHacwBWgQ0Qx6BAgFEAE)
+- **Step 2**: Search for **"Google Sheets API"** and activate it for your project.
+- **Step 3**: Search for **"Credentials"** and create or select a service credential. Download the JSON file containing your credentials.
 
-## Configuração
-- Clone este repositório em sua máquina local.
-- Certifique-se de ter o SDK .NET Core instalado em sua máquina.
-- Adicione o arquivo JSON de credenciais baixado do Console do Google Cloud ao diretório Credentials do projeto.
-- No código, **atualize o valor da variável credPath** para apontar para o caminho do arquivo de credenciais em sua máquina local.
-- Atualize o valor da variável spreadsheetId para o ID da planilha do Google Sheets que deseja modificar.
+## Configuration
+- Clone this repository to your local machine.
+- Ensure you have the .NET Core SDK installed on your machine.
+- Add the JSON credential file downloaded from the Google Cloud Console to the project's Credentials directory.
+- In the code, **update the value of the credPath variable** to point to the path of the credential file on your local machine.
+- Update the value of the spreadsheetId variable to the ID of the Google Sheets spreadsheet you want to modify.
 
-## Como usar
-Após configurar suas credenciais e ajustar as variáveis no código, você pode executar o projeto. Ele lerá a planilha especificada, calculará as notas dos alunos e atualizará a planilha com os resultados.
+## How to Use
+After setting up your credentials and adjusting the variables in the code, you can run the project. It will read the specified spreadsheet, calculate the students' grades, and update the spreadsheet with the results.
 
-## Observações
-Certifique-se de que a planilha do Google Sheets tenha a estrutura correta e que os intervalos especificados no código correspondam aos dados corretos na planilha.
-Link para a planilha utilizada no projeto: https://docs.google.com/spreadsheets/d/1-iz4w7WxPP5Dj6I-UjL5t1Y9WDrXqgg_g7B2csJVRbo/edit#gid=0
+## Notes
+Ensure that the Google Sheets spreadsheet has the correct structure and that the ranges specified in the code correspond to the correct data in the spreadsheet.
+Link to the spreadsheet used in the project: [Google Sheets Spreadsheet](https://docs.google.com/spreadsheets/d/1-iz4w7WxPP5Dj6I-UjL5t1Y9WDrXqgg_g7B2csJVRbo/edit#gid=0)
 
-
+## License
+This project was made by Caio Braga (github.com/caiotbraga)
