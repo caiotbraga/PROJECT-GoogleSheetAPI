@@ -20,7 +20,7 @@ After setting up your credentials and adjusting the variables in the code, you c
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE). 
 
 ## Notes
 Ensure that the Google Sheets spreadsheet has the correct structure and that the ranges specified in the code correspond to the correct data in the spreadsheet.
