@@ -18,6 +18,10 @@ Before using this code, follow the steps below to set up your credentials and ac
 ## How to Use
 After setting up your credentials and adjusting the variables in the code, you can run the project. It will read the specified spreadsheet, calculate the students' grades, and update the spreadsheet with the results.
 
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
 ## Notes
 Ensure that the Google Sheets spreadsheet has the correct structure and that the ranges specified in the code correspond to the correct data in the spreadsheet.
 Link to the spreadsheet used in the project: [Google Sheets Spreadsheet](https://docs.google.com/spreadsheets/d/1-iz4w7WxPP5Dj6I-UjL5t1Y9WDrXqgg_g7B2csJVRbo/edit#gid=0)
