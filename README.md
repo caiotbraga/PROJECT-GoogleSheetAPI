@@ -1,5 +1,15 @@
-# Google Sheets API Integration
-This project aims to read a spreadsheet in Google Sheets and make changes based on the data found in it. In this case, it is calculating the status of the student.
+<h1 align="center">Google Sheets API Integration</h2>
+
+<p align="center">This project aims to read a spreadsheet in Google Sheets and make changes based on the data found in it. In this case, it is calculating the status of the student.</p>
+
+<h2 align="center">💻Technologies useds</h2>
+<p align="center">
+  <a href="https://learn.microsoft.com/pt-br/dotnet/csharp" target="blank"><img src="https://img.shields.io/badge/C%23-purple?logo=c-sharp&logoColor=white&labelColor=421e6b" alt="C# Badge"></a>
+  <a href="https://dotnet.microsoft.com/download/dotnet-core/6.0" target="_blank"><img src="https://img.shields.io/badge/ASP.NET_Core-6.0-grey?logo=.net&logoColor=white&labelColor=purple" alt="ASP.NET Core 6.0 Badge"></a>
+  <a href="https://developers.google.com/sheets/api" target="_blank"><img src="https://img.shields.io/badge/Google_Sheets_API-4285F4?logo=google-sheets&logoColor=white" alt="Google Sheets API Badge"></a>
+</a>
+</p>
+
 
 ## Requirements
 Before using this code, follow the steps below to set up your credentials and activate the Google Sheets API:
